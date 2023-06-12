@@ -38,6 +38,7 @@ dependencies:
   flutter_redux: ^0.10.0
   flutter_secure_storage: ^8.0.0
   flutter_webview_plugin: ^0.4.0
+  introduction_screen: ^3.1.8
   redux: ^5.0.0
   redux_logging: ^0.5.1
   shared_preferences: ^2.1.2
@@ -45,12 +46,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
+  flutter_launcher_icons: ^0.10.0
+  flutter_native_splash: ^2.2.9
   flutter_lints: ^2.0.0
   build_runner: ^2.3.3
   envied_generator: ^0.3.0
@@ -70,6 +67,19 @@ flutter:
     - assets/images/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/poppins/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/poppins/Poppins-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/poppins/Poppins-Light.ttf
+          weight: 300
+        - asset: assets/fonts/poppins/Poppins-ExtraLight.ttf
+          weight: 200
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

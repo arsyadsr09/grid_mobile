@@ -1,4 +1,4 @@
-package com.example.grid_mobile
+package com.bireka.grid
 
 import io.flutter.embedding.android.FlutterActivity
 
