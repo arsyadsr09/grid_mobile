@@ -2,13 +2,16 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:grid_mobile/screens/home/home.dart';
+import 'package:grid_mobile/routes.dart';
+import 'package:grid_mobile/screens/introductions/introductions.dart';
+import 'package:grid_mobile/screens/layout/layout.dart';
 import 'package:redux/redux.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'redux/app_state.dart';
 import 'redux/store.dart';
 import 'utils/bad_certificate_handler.dart';
-import 'utils/colors_custom.dart';
+import 'helpers/colors_custom.dart';
 import 'utils/injector.dart';
 
 Future<void> main() async {
@@ -22,23 +25,45 @@ Future<void> main() async {
   ));
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key, required this.store});
 
   final Store<AppState> store;
 
-  // This widget is the root of your application.
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  bool introduction = false;
+
+  Future<void> initLocal() async {
+    final prefs = await SharedPreferences.getInstance();
+    bool intro = prefs.getBool("introduction") ?? false;
+
+    setState(() {
+      introduction = intro;
+    });
+  }
+
+  @override
+  void initState() {
+    initLocal();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return StoreProvider<AppState>(
-        store: store,
+        store: widget.store,
         child: MaterialApp(
-          title: 'Grid Mobile',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: ColorsCustom.primary),
-            useMaterial3: true,
-          ),
-          home: const Home(),
-        ));
+            title: 'Grid Mobile',
+            theme: ThemeData(
+              colorScheme:
+                  ColorScheme.fromSeed(seedColor: ColorsCustom.primary),
+              useMaterial3: true,
+            ),
+            home: !introduction ? const Introductions() : const Layout(),
+            routes: routes));
   }
 }

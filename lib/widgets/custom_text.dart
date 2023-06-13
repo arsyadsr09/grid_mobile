@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grid_mobile/utils/colors_custom.dart';
+import 'package:grid_mobile/helpers/colors_custom.dart';
 
 class CustomText extends StatelessWidget {
   final double? letterSpacing, fontSize, height;
