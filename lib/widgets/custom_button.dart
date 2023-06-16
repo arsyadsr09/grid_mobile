@@ -4,11 +4,13 @@ import 'package:grid_mobile/widgets/custom_text.dart';
 class CustomButton extends StatelessWidget {
   final String? text;
   final EdgeInsets? padding, margin;
-  final Color? textColor, bgColor;
+  final Color? textColor, bgColor, colorIcon;
   final double? fontSize, width;
   final BorderRadius? borderRadius;
   final FontWeight? fontWeight;
   final bool isLoading, flat;
+  final IconData? icon;
+  final Widget? image;
   final void Function()? onPressed;
 
   const CustomButton(
@@ -24,7 +26,10 @@ class CustomButton extends StatelessWidget {
       this.borderRadius,
       this.isLoading = false,
       this.margin,
-      this.flat = false});
+      this.flat = false,
+      this.icon,
+      this.colorIcon,
+      this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -49,23 +54,39 @@ class CustomButton extends StatelessWidget {
                 ),
                 onPressed: onPressed,
                 child: Center(
-                  child: isLoading
-                      ? const SizedBox(
-                          width: 17,
-                          height: 17,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2.5,
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.white),
-                          ),
-                        )
-                      : CustomText(
-                          text,
-                          color: textColor,
-                          fontSize: fontSize,
-                          fontWeight: fontWeight,
-                        ),
-                ),
+                    child: isLoading
+                        ? const SizedBox(
+                            width: 17,
+                            height: 17,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2.5,
+                              valueColor:
+                                  AlwaysStoppedAnimation<Color>(Colors.white),
+                            ),
+                          )
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                                image ?? const SizedBox(),
+                                icon != null
+                                    ? Icon(
+                                        icon,
+                                        size: 30,
+                                        color: colorIcon,
+                                      )
+                                    : const SizedBox(),
+                                image != null || icon != null
+                                    ? const SizedBox(width: 12)
+                                    : const SizedBox(),
+                                CustomText(
+                                  text,
+                                  color: textColor,
+                                  fontSize: fontSize,
+                                  fontWeight: fontWeight,
+                                ),
+                              ])),
               )
             : ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -78,23 +99,39 @@ class CustomButton extends StatelessWidget {
                     disabledBackgroundColor: bgColor),
                 onPressed: onPressed,
                 child: Center(
-                  child: isLoading
-                      ? const SizedBox(
-                          width: 17,
-                          height: 17,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2.5,
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.white),
-                          ),
-                        )
-                      : CustomText(
-                          text,
-                          color: textColor,
-                          fontSize: fontSize,
-                          fontWeight: fontWeight,
-                        ),
-                ),
+                    child: isLoading
+                        ? const SizedBox(
+                            width: 17,
+                            height: 17,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2.5,
+                              valueColor:
+                                  AlwaysStoppedAnimation<Color>(Colors.white),
+                            ),
+                          )
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                                image ?? const SizedBox(),
+                                icon != null
+                                    ? Icon(
+                                        icon,
+                                        size: 30,
+                                        color: colorIcon,
+                                      )
+                                    : const SizedBox(),
+                                image != null || icon != null
+                                    ? const SizedBox(width: 12)
+                                    : const SizedBox(),
+                                CustomText(
+                                  text,
+                                  color: textColor,
+                                  fontSize: fontSize,
+                                  fontWeight: fontWeight,
+                                ),
+                              ])),
               ));
   }
 }

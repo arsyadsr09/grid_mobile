@@ -96,7 +96,7 @@ class CustomIntroductionScreen extends StatefulWidget {
   final Curve curve;
 
   const CustomIntroductionScreen({
-     Key? key,
+    Key? key,
     required this.pages,
     required this.onDone,
     required this.done,

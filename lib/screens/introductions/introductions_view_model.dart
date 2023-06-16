@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grid_mobile/helpers/colors_custom.dart';
-import 'package:grid_mobile/widgets/custom_text.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../helpers/helpers.dart';
+import '../../widgets/widgets.dart';
 import './introductions.dart';
 
 abstract class IntroductionsViewModel extends State<Introductions> {

@@ -9,6 +9,8 @@ class ColorsCustom {
   static Color sunflower = const Color(0xFFF1C40F);
   static Color wisteria = const Color(0xFF8E44AD);
   static Color green = const Color(0xFF16A085);
+  static Color blue = const Color(0xFF2980B9);
   static Color generalText = const Color(0xFF53575B);
+  static Color softGrey = const Color(0xFFE8E8E8);
   static Color border = const Color(0xFFE8E8E8);
 }

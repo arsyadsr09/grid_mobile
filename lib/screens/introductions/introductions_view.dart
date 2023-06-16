@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grid_mobile/widgets/custom_text.dart';
-import 'package:grid_mobile/helpers/colors_custom.dart';
+import '../../helpers/helpers.dart';
+import '../../widgets/widgets.dart';
 import './introductions_view_model.dart';
 import 'widgets/custom_introduction.dart';
 
