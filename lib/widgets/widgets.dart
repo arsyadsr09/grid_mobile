@@ -3,3 +3,4 @@ export 'custom_text.dart';
 export 'error_form_text.dart';
 export 'form_text.dart';
 export 'webview_page.dart';
+export 'custom_slider_button.dart';

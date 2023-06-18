@@ -1,5 +1,5 @@
 enum ChargingStatus {
-  stopped,
+  done,
   process,
   interupted,
   inactive,

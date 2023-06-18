@@ -1,5 +1,14 @@
-class SetThemesMap {
-  final List? themesMap;
+import 'package:geolocator/geolocator.dart';
+import 'package:grid_mobile/constants/enum/route_enum.dart';
 
-  SetThemesMap({this.themesMap});
+class SetMyLocation {
+  final Position? myLocation;
+
+  SetMyLocation({this.myLocation});
+}
+
+class SetLayoutIndexScreen {
+  final RouteEnum? layoutIndexScreen;
+
+  SetLayoutIndexScreen({this.layoutIndexScreen});
 }

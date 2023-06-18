@@ -1,34 +1,23 @@
-import 'dart:io';
+import 'package:geolocator/geolocator.dart';
+import 'package:grid_mobile/constants/enum/route_enum.dart';
 
 class MainState {
-  MainState({this.themesMap});
+  MainState({this.myLocation, this.layoutIndexScreen = RouteEnum.home});
 
-  final List? themesMap;
+  final Position? myLocation;
+  final RouteEnum? layoutIndexScreen;
 
   factory MainState.initial() {
-    return MainState(themesMap: []);
+    return MainState(myLocation: null);
   }
 
-  MainState copyWith(
-      {List? themesMap,
-      List? offlineMaps,
-      List? groups,
-      List? element,
-      List? layers,
-      List? elementInputList,
-      double? unitSize,
-      String? menuSelected,
-      Map<String, dynamic>? trackingData,
-      List<File>? trackingImage,
-      List<Map<String, dynamic>>? groupDrawmap,
-      Map? selectedGroup,
-      Map? mapType,
-      Map? directionStart,
-      Map? directionEnd,
-      Map? selectedLayer,
-      Map? selectedOfflineMap}) {
+  MainState copyWith({
+    Position? myLocation,
+    RouteEnum? layoutIndexScreen,
+  }) {
     return MainState(
-      themesMap: themesMap ?? this.themesMap,
+      myLocation: myLocation ?? this.myLocation,
+      layoutIndexScreen: layoutIndexScreen ?? this.layoutIndexScreen,
     );
   }
 
@@ -37,9 +26,9 @@ class MainState {
       identical(this, other) ||
       other is MainState &&
           runtimeType == other.runtimeType &&
-          themesMap == other.themesMap ;
+          myLocation == other.myLocation &&
+          layoutIndexScreen == other.layoutIndexScreen;
 
   @override
-  int get hashCode =>
-      themesMap.hashCode ;
+  int get hashCode => myLocation.hashCode ^ layoutIndexScreen.hashCode;
 }
