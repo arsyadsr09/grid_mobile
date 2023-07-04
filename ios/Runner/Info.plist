@@ -49,5 +49,11 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>NSCameraUsageDescription</key>
+		<string>This app needs camera access to scan QR codes</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>This app needs photos access to get QR code from photo library</string>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>To allow library image_picker</string>
 	</dict>
 </plist>
