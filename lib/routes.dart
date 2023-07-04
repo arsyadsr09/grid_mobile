@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'screens/home/home.dart';
 import 'screens/layout/layout.dart';
+import 'screens/scanner/scanner.dart';
 import 'screens/sign_in/sign_in.dart';
 import 'screens/sign_up/sign_up.dart';
 
@@ -10,4 +11,5 @@ final Map<String, WidgetBuilder> routes = {
   '/Layout': (BuildContext context) => const Layout(),
   '/SignIn': (BuildContext context) => const SignIn(),
   '/SignUp': (BuildContext context) => const SignUp(),
+  '/Scanner': (BuildContext context) => const Scanner(),
 };

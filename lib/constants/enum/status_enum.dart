@@ -1,7 +1,1 @@
-enum ChargingStatus {
-  done,
-  process,
-  interupted,
-  inactive,
-  reserved
-}
+enum ChargingStatus { done, process, interupted, inactive, reserved, ready }

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:grid_mobile/routes.dart';
 import 'package:grid_mobile/screens/introductions/introductions.dart';
@@ -9,6 +10,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:redux/redux.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'localization/app_translations_delegate.dart';
 import 'redux/app_state.dart';
 import 'redux/store.dart';
 import 'screens/location_permission/location_permission.dart';
@@ -39,6 +41,8 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   bool introduction = false;
   bool noPermissionLocation = false;
+  AppTranslationsDelegate newLocaleDelegate =
+      const AppTranslationsDelegate(newLocale: Locale('en', ''));
 
   Future<void> checkLocationPermission() async {
     if (await Permission.location.request().isGranted == false) {
@@ -58,10 +62,26 @@ class _MainAppState extends State<MainApp> {
     });
   }
 
+  Future<void> onLocaleChange(Locale locale) async {
+    setState(() {
+      newLocaleDelegate = AppTranslationsDelegate(newLocale: locale);
+    });
+  }
+
+  Future<void> initLocale() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String language = prefs.getString('language') ?? 'id';
+    setState(() {
+      newLocaleDelegate =
+          AppTranslationsDelegate(newLocale: Locale(language, ''));
+    });
+  }
+
   @override
   void initState() {
     initLocal();
     checkLocationPermission();
+    initLocale();
     super.initState();
   }
 
@@ -77,6 +97,15 @@ class _MainAppState extends State<MainApp> {
                   ColorScheme.fromSeed(seedColor: ColorsCustom.primary),
               useMaterial3: true,
             ),
+            localizationsDelegates: [
+              newLocaleDelegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
+            supportedLocales: const <Locale>[
+              Locale('en', ''),
+              Locale('id', ''),
+            ],
             home: !introduction
                 ? const Introductions()
                 : noPermissionLocation
