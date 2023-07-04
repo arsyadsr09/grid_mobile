@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../helpers/helpers.dart';
+import '../../localization/app_translations.dart';
 import '../../widgets/widgets.dart';
 import './verify_otp_view_model.dart';
 
@@ -34,7 +35,7 @@ class VerifyOtpView extends VerifyOtpViewModel {
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 30),
                         child: CustomText(
-                          "Verify OTP",
+                          AppTranslations.of(context)!.text("verify_otp"),
                           color: ColorsCustom.black,
                           fontSize: 36,
                           fontWeight: FontWeight.w600,
@@ -47,7 +48,7 @@ class VerifyOtpView extends VerifyOtpViewModel {
                         textAlign: TextAlign.center,
                         text: TextSpan(
                             text:
-                                "We have sent a Whatsapp verification code to ",
+                                "${AppTranslations.of(context)!.text("verify_text_1")} ",
                             style: const TextStyle(
                                 color: Color(0xFF282828),
                                 fontSize: 13,
@@ -55,14 +56,14 @@ class VerifyOtpView extends VerifyOtpViewModel {
                                 fontFamily: 'Poppins'),
                             children: [
                               TextSpan(
-                                  text: widget.phoneNumber
-                                      .replaceAll(RegExp(r"\s+"), "-"),
+                                  text: widget.email,
                                   style: TextStyle(
                                       color: ColorsCustom.black,
                                       fontWeight: FontWeight.w500,
                                       fontSize: 14)),
-                              const TextSpan(
-                                  text: ". Please enter the verification code.")
+                              TextSpan(
+                                  text:
+                                      ". ${AppTranslations.of(context)!.text("verify_text_2")}.")
                             ]),
                       ),
                     ),
@@ -133,13 +134,16 @@ class VerifyOtpView extends VerifyOtpViewModel {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const Text("Didn't receive the code? ",
-                            style: TextStyle(
+                        Text(
+                            "${AppTranslations.of(context)!.text("resend_text")}? ",
+                            style: const TextStyle(
                                 color: Color(0xFF282828),
                                 fontSize: 12,
                                 fontFamily: 'Poppins')),
                         GestureDetector(
-                            child: Text("Resend Code",
+                            child: Text(
+                                AppTranslations.of(context)!
+                                    .text("resend_code"),
                                 style: TextStyle(
                                     color: !resendActive
                                         ? Colors.grey
@@ -176,7 +180,7 @@ class VerifyOtpView extends VerifyOtpViewModel {
                         ]),
               child: CustomButton(
                 bgColor: ColorsCustom.primary,
-                text: "Verify",
+                text: AppTranslations.of(context)!.text("verify"),
                 textColor: ColorsCustom.white,
                 fontWeight: FontWeight.w500,
                 fontSize: 16,

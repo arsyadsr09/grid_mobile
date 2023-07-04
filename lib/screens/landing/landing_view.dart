@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../helpers/helpers.dart';
+import '../../localization/app_translations.dart';
 import '../../widgets/widgets.dart';
 import './landing_view_model.dart';
 
@@ -40,7 +41,8 @@ class LandingView extends LandingViewModel {
                     children: [
                       CustomButton(
                         bgColor: ColorsCustom.black,
-                        text: "Continue with Apple",
+                        text:
+                            "${AppTranslations.of(context)!.text("continue_with")} Apple",
                         textColor: ColorsCustom.white,
                         fontWeight: FontWeight.w600,
                         icon: Icons.apple_outlined,
@@ -51,7 +53,8 @@ class LandingView extends LandingViewModel {
                       ),
                       CustomButton(
                         bgColor: Colors.white,
-                        text: "Continue with Google",
+                        text:
+                            "${AppTranslations.of(context)!.text("continue_with")} Google",
                         textColor: ColorsCustom.black,
                         fontWeight: FontWeight.w600,
                         image: Image.asset(
@@ -76,7 +79,7 @@ class LandingView extends LandingViewModel {
                             ),
                             const SizedBox(width: 15),
                             CustomText(
-                              "OR",
+                              AppTranslations.of(context)!.text("or"),
                               color: ColorsCustom.white.withOpacity(0.75),
                               fontSize: 11,
                               fontWeight: FontWeight.w600,
@@ -95,7 +98,7 @@ class LandingView extends LandingViewModel {
                       CustomButton(
                         onPressed: onSignIn,
                         bgColor: ColorsCustom.primary,
-                        text: "Sign In",
+                        text: AppTranslations.of(context)!.text("sign_in"),
                         textColor: ColorsCustom.white,
                         fontWeight: FontWeight.w500,
                         fontSize: 16,
@@ -108,7 +111,7 @@ class LandingView extends LandingViewModel {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           CustomText(
-                            "New User?",
+                            "${AppTranslations.of(context)!.text("new_user")}?",
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
                             color: ColorsCustom.white,
@@ -117,7 +120,7 @@ class LandingView extends LandingViewModel {
                             onTap: () =>
                                 Navigator.pushNamed(context, "/SignUp"),
                             child: CustomText(
-                              " Sign Up",
+                              " ${AppTranslations.of(context)!.text("sign_up")}",
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                               color: ColorsCustom.primary,

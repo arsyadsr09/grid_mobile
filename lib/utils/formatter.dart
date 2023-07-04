@@ -3,12 +3,16 @@ import 'package:intl/intl.dart';
 class Formatters {
   static String formatCurrency(int? money) {
     final formatCurrency =
-        NumberFormat.currency(symbol: 'Rp. ', decimalDigits: 0, locale: 'in');
+        NumberFormat.currency(symbol: 'Rp ', decimalDigits: 0, locale: 'in');
     return formatCurrency.format(money);
   }
 
   static String formatDate(DateTime date) {
     return DateFormat('dd-MM-yyyy').format(date);
+  }
+
+  static String formatDateTime(DateTime date) {
+    return DateFormat('dd-MM-yyyy HH:mm').format(date);
   }
 
   static String getTime(DateTime expiredIn) {
@@ -40,7 +44,7 @@ class Formatters {
   }
 
   static DateTime stringToDate(String date) {
-    return DateFormat("yyyy-MM-dd HH:m").parse(date);
+    return DateFormat("dd-MM-yyyy HH:mm").parse(date);
   }
 
   static String formatListToString(List? list) {

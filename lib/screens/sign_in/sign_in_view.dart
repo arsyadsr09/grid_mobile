@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../helpers/helpers.dart';
+import '../../localization/app_translations.dart';
 import '../../widgets/widgets.dart';
 import './sign_in_view_model.dart';
 
@@ -30,7 +31,7 @@ class SignInView extends SignInViewModel {
                     Padding(
                       padding: const EdgeInsets.only(left: 15, bottom: 30),
                       child: CustomText(
-                        "Sign In",
+                        AppTranslations.of(context)!.text("sign_in"),
                         color: ColorsCustom.black,
                         fontSize: 36,
                         fontWeight: FontWeight.w600,
@@ -40,7 +41,7 @@ class SignInView extends SignInViewModel {
                         ? ErrorForm(error: errorEmail)
                         : const SizedBox(),
                     FormText(
-                        hint: "Email",
+                        hint: AppTranslations.of(context)!.text("email"),
                         controller: emailController,
                         onChange: clearError,
                         onClear: onClearTextField,
@@ -54,7 +55,7 @@ class SignInView extends SignInViewModel {
                         ),
                         idError: "email"),
                     FormText(
-                        hint: "Password",
+                        hint: AppTranslations.of(context)!.text("password"),
                         controller: passwordController,
                         onChange: clearError,
                         onClear: onClearTextField,
@@ -73,7 +74,7 @@ class SignInView extends SignInViewModel {
                       child: Padding(
                         padding: const EdgeInsets.only(right: 15, top: 10),
                         child: CustomText(
-                          "Forgot Password?",
+                          "${AppTranslations.of(context)!.text("forgot_password")}?",
                           color: ColorsCustom.black,
                           fontSize: 14,
                           fontWeight: FontWeight.w400,

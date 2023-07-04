@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../helpers/helpers.dart';
+import '../../localization/app_translations.dart';
 import '../../widgets/widgets.dart';
 import './sign_up_view_model.dart';
 
@@ -30,14 +31,14 @@ class SignUpView extends SignUpViewModel {
                     Padding(
                       padding: const EdgeInsets.only(left: 15, bottom: 30),
                       child: CustomText(
-                        "Sign Up",
+                        AppTranslations.of(context)!.text("sign_up"),
                         color: ColorsCustom.black,
                         fontSize: 36,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     FormText(
-                        hint: "First Name",
+                        hint: AppTranslations.of(context)!.text("first_name"),
                         controller: firstnameController,
                         onChange: clearError,
                         onClear: onClearTextField,
@@ -52,7 +53,7 @@ class SignUpView extends SignUpViewModel {
                         ),
                         idError: "firstname"),
                     FormText(
-                        hint: "Last Name",
+                        hint: AppTranslations.of(context)!.text("last_name"),
                         controller: lastnameController,
                         onChange: clearError,
                         onClear: onClearTextField,
@@ -67,7 +68,7 @@ class SignUpView extends SignUpViewModel {
                         ),
                         idError: "lastname"),
                     FormText(
-                        hint: "Email",
+                        hint: AppTranslations.of(context)!.text("email"),
                         controller: emailController,
                         onChange: clearError,
                         onClear: onClearTextField,
@@ -81,7 +82,7 @@ class SignUpView extends SignUpViewModel {
                         ),
                         idError: "email"),
                     FormText(
-                        hint: "Phone Number",
+                        hint:AppTranslations.of(context)!.text("phone_number"),
                         controller: phoneNumberController,
                         onChange: clearError,
                         onClear: onClearTextField,
@@ -98,7 +99,7 @@ class SignUpView extends SignUpViewModel {
                         ),
                         idError: "phoneNumber"),
                     FormText(
-                        hint: "Password",
+                        hint: AppTranslations.of(context)!.text("password"),
                         controller: passwordController,
                         onChange: clearError,
                         onClear: onClearTextField,
@@ -141,7 +142,7 @@ class SignUpView extends SignUpViewModel {
                 CustomButton(
                   onPressed: onSignUp,
                   bgColor: ColorsCustom.primary,
-                  text: "Continue",
+                  text: AppTranslations.of(context)!.text("continue"),
                   textColor: ColorsCustom.white,
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
@@ -151,7 +152,7 @@ class SignUpView extends SignUpViewModel {
                     ? CustomButton(
                         onPressed: () => Navigator.pop(context),
                         flat: true,
-                        text: "Back",
+                        text: AppTranslations.of(context)!.text("back"),
                         textColor: ColorsCustom.black,
                         fontWeight: FontWeight.w500,
                         fontSize: 16,

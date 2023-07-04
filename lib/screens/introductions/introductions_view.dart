@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../helpers/helpers.dart';
+import '../../localization/app_translations.dart';
 import '../../widgets/widgets.dart';
 import './introductions_view_model.dart';
 import 'widgets/custom_introduction.dart';
@@ -15,7 +16,7 @@ class IntroductionsView extends IntroductionsViewModel {
       showSkipButton: true,
       showNextButton: true,
       skip: CustomText(
-        "Skip",
+        AppTranslations.of(context)!.text("skip"),
         color: ColorsCustom.primary,
       ),
       next: const Icon(Icons.arrow_forward),

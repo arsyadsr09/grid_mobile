@@ -69,6 +69,6 @@ abstract class SignUpViewModel extends State<SignUp> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (_) => const VerifyOtp(phoneNumber: "0812 1293 6192")));
+            builder: (_) => const VerifyOtp(email: "abcdefg@gmail.com")));
   }
 }
