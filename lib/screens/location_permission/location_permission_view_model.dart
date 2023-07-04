@@ -1,22 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart' hide LocationPermission;
 import 'package:permission_handler/permission_handler.dart';
+import '../../localization/app_translations.dart';
 import './location_permission.dart';
 
 abstract class LocationPermissionViewModel extends State<LocationPermission> {
-  List<Map<String, dynamic>> policyText = [
-    {"title": true, "value": "Mengenai izin lokasi dalam mode belakang layar:"},
-    {
-      "title": false,
-      "value":
-          "Aplikasi Grid Mobile memiliki menu map, untuk mengetahui lokasi anda dengan EV Station Grid terdekat"
-    },
-    {
-      "title": false,
-      "value":
-          "Ketika aplikasi Grid Mobile tidak digunakan, aplikasi ini tidak akan mengumpulkan lokasi Anda."
-    },
-  ];
+  late List<Map<String, dynamic>> policyText;
 
   Future<void> onApproveClicked() async {
     if (await Permission.locationWhenInUse.serviceStatus.isEnabled) {
@@ -47,5 +36,15 @@ abstract class LocationPermissionViewModel extends State<LocationPermission> {
     } else {
       await Geolocator.openLocationSettings();
     }
+  }
+
+  @override
+  void initState() {
+    policyText = [
+      {"title": true, "value": AppTranslations.of(context)!.text("policy_1")},
+      {"title": false, "value": AppTranslations.of(context)!.text("policy_2")},
+      {"title": false, "value": AppTranslations.of(context)!.text("policy_3")},
+    ];
+    super.initState();
   }
 }

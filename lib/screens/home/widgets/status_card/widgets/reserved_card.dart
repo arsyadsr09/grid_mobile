@@ -5,6 +5,7 @@ import 'package:grid_mobile/screens/home/widgets/status_card/widgets/direction_m
 import 'package:grid_mobile/utils/formatter.dart';
 
 import '../../../../../helpers/helpers.dart';
+import '../../../../../localization/app_translations.dart';
 import '../../../../../widgets/widgets.dart';
 
 class ReservedCard extends StatelessWidget {
@@ -55,9 +56,8 @@ class ReservedCard extends StatelessWidget {
                 minHeight: isShow ? minHeightShow : minHeightHide,
               ),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-              ),
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(16)),
               width: screenSize.width,
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,7 +78,7 @@ class ReservedCard extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    expiredInInfoAnimation(),
+                    expiredInInfoAnimation(context),
                     const SizedBox(height: 16),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,7 +95,7 @@ class ReservedCard extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             CustomText(
-                              "LOCATION",
+                              AppTranslations.of(context)!.text("location"),
                               color: ColorsCustom.disabled,
                               fontWeight: FontWeight.w500,
                               fontSize: 9,
@@ -109,7 +109,7 @@ class ReservedCard extends StatelessWidget {
                             ),
                             const SizedBox(height: 10),
                             CustomText(
-                              "SLOT",
+                              AppTranslations.of(context)!.text("slot"),
                               color: ColorsCustom.disabled,
                               fontWeight: FontWeight.w500,
                               fontSize: 9,
@@ -123,7 +123,7 @@ class ReservedCard extends StatelessWidget {
                             ),
                           ],
                         )),
-                        buttonOpenDirection()
+                        buttonOpenDirection(context, screenSize),
                       ],
                     ),
                     directionMap(),
@@ -132,7 +132,7 @@ class ReservedCard extends StatelessWidget {
                       margin: const EdgeInsets.only(top: 16),
                       child: CustomButton(
                         onPressed: onClaimSlot,
-                        text: "Claim Slot",
+                        text: AppTranslations.of(context)!.text("claim_slot"),
                         textColor: ColorsCustom.white,
                         bgColor: ColorsCustom.green,
                         fontWeight: FontWeight.w500,
@@ -155,7 +155,9 @@ class ReservedCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     CustomText(
-                      isShow ? "Hide" : "Show",
+                      isShow
+                          ? AppTranslations.of(context)!.text("hide")
+                          : AppTranslations.of(context)!.text("show"),
                       color: ColorsCustom.white,
                       fontWeight: FontWeight.w500,
                       fontSize: 9,
@@ -183,7 +185,7 @@ class ReservedCard extends StatelessWidget {
     );
   }
 
-  Widget expiredInInfoAnimation() {
+  Widget expiredInInfoAnimation(BuildContext context) {
     return AnimatedOpacity(
         duration: const Duration(milliseconds: 200),
         opacity: !isShow ? 1 : 0,
@@ -191,14 +193,15 @@ class ReservedCard extends StatelessWidget {
             duration: const Duration(milliseconds: 300),
             height: !isShow ? 55 : 0,
             padding: const EdgeInsets.only(top: 16),
-            child: expiredInContent()));
+            child: expiredInContent(context)));
   }
 
-  Widget expiredInContent() {
+  Widget expiredInContent(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
             Icons.timer_outlined,
@@ -212,7 +215,7 @@ class ReservedCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               CustomText(
-                "EXPIRED IN",
+                AppTranslations.of(context)!.text("expired_in"),
                 color: ColorsCustom.disabled,
                 fontWeight: FontWeight.w500,
                 fontSize: 9,
@@ -232,46 +235,50 @@ class ReservedCard extends StatelessWidget {
     );
   }
 
-  Widget buttonOpenDirection() {
-    if (isShow) {
-      return AnimatedOpacity(
-          duration: const Duration(milliseconds: 200),
-          opacity: isShow ? 1 : 0,
-          child: AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              height: isShow ? 50 : 0,
-              child: expiredInContent()));
-    }
-
+  Widget buttonOpenDirection(BuildContext context, Size screenSize) {
     return Stack(
       children: [
-        const SizedBox(height: 55, width: ,)
-        SizedBox(
-          height: 27,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                backgroundColor: ColorsCustom.blue),
-            onPressed: onOpenDirection,
-            child: Row(mainAxisSize: MainAxisSize.min, children: [
-              Icon(
-                Icons.directions,
-                size: 14,
-                color: ColorsCustom.white,
+        AnimatedOpacity(
+            duration: const Duration(milliseconds: 200),
+            opacity: isShow ? 1 : 0,
+            child: AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                child: expiredInContent(context))),
+        Positioned(
+          right: 0,
+          child: AnimatedOpacity(
+            duration: const Duration(milliseconds: 200),
+            opacity: !isShow ? 1 : 0,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              height: !isShow ? 27 : 0,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    backgroundColor: ColorsCustom.blue),
+                onPressed: onOpenDirection,
+                child: Row(mainAxisSize: MainAxisSize.min, children: [
+                  Icon(
+                    Icons.directions,
+                    size: 14,
+                    color: ColorsCustom.white,
+                  ),
+                  const SizedBox(width: 6),
+                  CustomText(
+                    AppTranslations.of(context)!.text("open_direction"),
+                    color: ColorsCustom.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 9,
+                  ),
+                ]),
               ),
-              const SizedBox(width: 6),
-              CustomText(
-                "Open Directions",
-                color: ColorsCustom.white,
-                fontWeight: FontWeight.w500,
-                fontSize: 9,
-              ),
-            ]),
+            ),
           ),
-        ),
+        )
       ],
     );
   }

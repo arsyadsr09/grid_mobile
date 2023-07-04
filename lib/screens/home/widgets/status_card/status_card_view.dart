@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:grid_mobile/constants/enum/status_enum.dart';
+import 'package:grid_mobile/screens/home/widgets/status_card/widgets/done_card.dart';
 import 'package:grid_mobile/screens/home/widgets/status_card/widgets/inactive_card.dart';
 import 'package:grid_mobile/screens/home/widgets/status_card/widgets/process_card.dart';
+import 'package:grid_mobile/screens/home/widgets/status_card/widgets/ready_card.dart';
 import 'package:grid_mobile/screens/home/widgets/status_card/widgets/reserved_card.dart';
 import './status_card_view_model.dart';
 
@@ -9,6 +11,16 @@ class StatusCardView extends StatusCardViewModel {
   @override
   Widget build(BuildContext context) {
     switch (status) {
+      case ChargingStatus.ready:
+        return ReadyCard(
+          onStartCharging: onStartCharging,
+          statusBgColor: statusBgColor,
+          statusIconColor: statusIconColor,
+          statusText: statusText,
+          location: location,
+          slot: slot,
+          expiredIn: expiredIn,
+        );
       case ChargingStatus.inactive:
         return const InactiveCard();
       case ChargingStatus.process:
@@ -46,6 +58,8 @@ class StatusCardView extends StatusCardViewModel {
           onOpenDirection: onOpenDirection,
           latLng: reservedLocation,
         );
+      case ChargingStatus.done:
+        return const DoneCard();
       default:
         return const SizedBox();
     }

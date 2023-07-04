@@ -15,6 +15,7 @@ import 'package:redux/redux.dart';
 import '../../../constants/general_const.dart';
 import '../../../constants/enum/route_enum.dart';
 import '../../../helpers/helpers.dart';
+import '../../../localization/app_translations.dart';
 import '../../../redux/actions/main_action.dart';
 import '../../../redux/app_state.dart';
 
@@ -184,7 +185,8 @@ class _MiniMapState extends State<MiniMap> {
                             color: ColorsCustom.black,
                             borderRadius: BorderRadius.circular(12)),
                         child: CustomText(
-                          "Charging Station Near Me",
+                          AppTranslations.of(context)!
+                              .text("charging_stations_near_me"),
                           color: ColorsCustom.white,
                           fontWeight: FontWeight.w600,
                           fontSize: 9,

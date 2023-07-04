@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../helpers/helpers.dart';
+import '../../../../../localization/app_translations.dart';
 import '../../../../../widgets/widgets.dart';
 import 'energy_chart.dart';
 
@@ -101,7 +102,7 @@ class ProcessCard extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 CustomText(
-                                  "POWER",
+                                  AppTranslations.of(context)!.text("power"),
                                   color: ColorsCustom.disabled,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 7,
@@ -132,13 +133,14 @@ class ProcessCard extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 CustomText(
-                                  "POWER TRANSFER",
+                                  AppTranslations.of(context)!
+                                      .text("power_transfer"),
                                   color: ColorsCustom.disabled,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 7,
                                 ),
                                 CustomText(
-                                  "${currentPower.toStringAsFixed(1)} KWh / ${totalPower.toStringAsFixed(1)} KWh",
+                                  "${currentPower.toStringAsFixed(1)} ${AppTranslations.of(context)!.text("kwh")}, / ${totalPower.toStringAsFixed(1)} ${AppTranslations.of(context)!.text("kwh")}",
                                   color: ColorsCustom.white,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 10,
@@ -151,7 +153,7 @@ class ProcessCard extends StatelessWidget {
                     ],
                   ),
                   EnergyChart(isShow: isShow, statusBgColor: statusBgColor),
-                  sliderStopButton(screenSize),
+                  sliderStopButton(context, screenSize),
                   isShow ? const SizedBox(height: 40) : const SizedBox(),
                 ],
               ),
@@ -167,7 +169,9 @@ class ProcessCard extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       CustomText(
-                        isShow ? "Hide" : "Show",
+                        isShow
+                            ? AppTranslations.of(context)!.text("hide")
+                            : AppTranslations.of(context)!.text("show"),
                         color: ColorsCustom.white,
                         fontWeight: FontWeight.w500,
                         fontSize: 9,
@@ -203,7 +207,7 @@ class ProcessCard extends StatelessWidget {
     );
   }
 
-  Widget sliderStopButton(Size screenSize) {
+  Widget sliderStopButton(BuildContext context, Size screenSize) {
     return AnimatedOpacity(
         duration: const Duration(milliseconds: 200),
         opacity: isShow ? 1 : 0,
@@ -218,7 +222,8 @@ class ProcessCard extends StatelessWidget {
 
             ///Put label over here
             alignLabel: Alignment.center,
-            label: CustomText("Slide to Stop Charging",
+            label: CustomText(
+                AppTranslations.of(context)!.text("slide_to_stop_charging"),
                 color: ColorsCustom.white,
                 fontWeight: FontWeight.w400,
                 fontSize: 9),

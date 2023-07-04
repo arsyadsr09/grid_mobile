@@ -6,6 +6,7 @@ import 'package:flutter_map/flutter_map.dart';
 
 import '../../../../../constants/general_const.dart';
 import '../../../../../helpers/helpers.dart';
+import '../../../../../localization/app_translations.dart';
 
 class DirectionMap extends StatefulWidget {
   const DirectionMap(
@@ -51,7 +52,7 @@ class _DirectionMapState extends State<DirectionMap> {
         child: AnimatedContainer(
             duration: const Duration(milliseconds: 300),
             margin: EdgeInsets.only(top: widget.isShow ? 16 : 0),
-            height: widget.isShow ? 150 : 0,
+            height: widget.isShow ? 175 : 0,
             width: double.maxFinite,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
             child: ClipRRect(
@@ -79,7 +80,7 @@ class _DirectionMapState extends State<DirectionMap> {
                         ),
                         Container(
                           color: ColorsCustom.black.withOpacity(0.2),
-                          height: 150,
+                          height: 175,
                           width: double.infinity,
                         ),
                       ],
@@ -107,7 +108,8 @@ class _DirectionMapState extends State<DirectionMap> {
                               ),
                               const SizedBox(width: 6),
                               CustomText(
-                                "Open Directions",
+                                AppTranslations.of(context)!
+                                    .text("open_direction"),
                                 color: ColorsCustom.white,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 9,

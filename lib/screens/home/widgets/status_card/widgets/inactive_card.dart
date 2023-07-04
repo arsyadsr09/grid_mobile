@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grid_mobile/widgets/widgets.dart';
 
 import '../../../../../helpers/helpers.dart';
+import '../../../../../localization/app_translations.dart';
 
 class InactiveCard extends StatelessWidget {
   const InactiveCard({super.key});
@@ -31,7 +32,7 @@ class InactiveCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomText(
-                "Welcome to ",
+                "${AppTranslations.of(context)!.text("welcome_to")} ",
                 color: ColorsCustom.white,
                 fontWeight: FontWeight.w600,
                 fontSize: 16,

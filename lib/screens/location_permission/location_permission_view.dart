@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:grid_mobile/helpers/helpers.dart';
+import '../../localization/app_translations.dart';
 import '../../widgets/widgets.dart';
 import './location_permission_view_model.dart';
 
@@ -21,8 +22,8 @@ class LocationPermissionView extends LocationPermissionViewModel {
                 width: screenSize.width / 1.8,
                 child: Image.asset("assets/images/location_permission.png"),
               ),
-              const CustomText(
-                "Izin Lokasi",
+               CustomText(
+                AppTranslations.of(context)!.text("location_permission"),
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
               ),
@@ -39,7 +40,7 @@ class LocationPermissionView extends LocationPermissionViewModel {
                     top: 20, bottom: Platform.isAndroid ? 10 : 0),
                 child: CustomButton(
                     bgColor: ColorsCustom.primary,
-                    text: "I Agree",
+                    text: AppTranslations.of(context)!.text("i_agree"),
                     textColor: ColorsCustom.white,
                     fontWeight: FontWeight.w500,
                     fontSize: 16,

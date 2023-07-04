@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:grid_mobile/helpers/colors_custom.dart';
 import 'package:grid_mobile/widgets/custom_text.dart';
 
+import '../../../../../localization/app_translations.dart';
+
 class EnergyChart extends StatefulWidget {
   const EnergyChart({
     super.key,
@@ -51,7 +53,8 @@ class _EnergyChartState extends State<EnergyChart> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 color: ColorsCustom.black,
-                border: Border.all(color: widget.statusBgColor.withOpacity(0.3))),
+                border:
+                    Border.all(color: widget.statusBgColor.withOpacity(0.3))),
             child: LineChart(
               mainData(),
             ),
@@ -73,15 +76,16 @@ class _EnergyChartState extends State<EnergyChart> {
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
     String text;
+    String kwh = AppTranslations.of(context)!.text("kwh");
     switch (value.toInt()) {
       case 0:
-        text = '0 KWh';
+        text = '0 $kwh';
         break;
       case 25:
-        text = '25 KWh';
+        text = '25 $kwh';
         break;
       case 50:
-        text = '50 KWh';
+        text = '50 $kwh';
         break;
       default:
         return Container();
@@ -146,7 +150,7 @@ class _EnergyChartState extends State<EnergyChart> {
         border: Border.all(color: const Color(0xff37434d)),
       ),
       minX: 0,
-      maxX: 60,
+      maxX: 120,
       minY: 0,
       maxY: 50,
       lineBarsData: [

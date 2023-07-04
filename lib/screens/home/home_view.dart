@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:grid_mobile/helpers/helpers.dart';
 import 'package:grid_mobile/widgets/custom_text.dart';
 
+import '../../localization/app_translations.dart';
 import './widgets/widgets.dart';
 import './home_view_model.dart';
 
@@ -109,16 +110,22 @@ class HomeView extends HomeViewModel {
                                 child: Row(children: [
                                   buttonTopBar(
                                       icon: Icons.qr_code_scanner_rounded,
-                                      name: 'Scan QR'),
+                                      name: AppTranslations.of(context)!
+                                          .text("qr_scan"),
+                                      onTap: () => Navigator.pushNamed(
+                                          context, "/Scanner")),
                                   buttonTopBar(
                                       icon: Icons.wallet_outlined,
-                                      name: 'Top Up'),
+                                      name: AppTranslations.of(context)!
+                                          .text("top_up")),
                                   buttonTopBar(
                                       icon: Icons.call_made_rounded,
-                                      name: 'Send'),
+                                      name: AppTranslations.of(context)!
+                                          .text("send")),
                                   buttonTopBar(
                                       icon: Icons.call_received_rounded,
-                                      name: 'Request'),
+                                      name: AppTranslations.of(context)!
+                                          .text("request")),
                                 ]),
                               ),
                             ),
@@ -151,25 +158,29 @@ class HomeView extends HomeViewModel {
     );
   }
 
-  Widget buttonTopBar({required IconData icon, required String name}) {
+  Widget buttonTopBar(
+      {required IconData icon, required String name, void Function()? onTap}) {
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(
-              icon,
-              size: 24,
-              color: ColorsCustom.white,
-            ),
-            CustomText(
-              name,
-              color: ColorsCustom.white,
-              fontSize: 10,
-            ),
-          ],
+      child: GestureDetector(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                size: 24,
+                color: ColorsCustom.white,
+              ),
+              CustomText(
+                name,
+                color: ColorsCustom.white,
+                fontSize: 10,
+              ),
+            ],
+          ),
         ),
       ),
     );

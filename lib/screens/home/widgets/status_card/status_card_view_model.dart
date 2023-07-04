@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart' show LatLng;
 import 'package:grid_mobile/constants/enum/status_enum.dart';
 import 'package:grid_mobile/helpers/helpers.dart';
+import '../../../../localization/app_translations.dart';
 import './status_card.dart';
 
 abstract class StatusCardViewModel extends State<StatusCard> {
@@ -61,6 +62,10 @@ abstract class StatusCardViewModel extends State<StatusCard> {
     debugPrint("Direction opened!");
   }
 
+  void onStartCharging() {
+    debugPrint("Start Charging");
+  }
+
   void renderStatusDetail(String value, IconData icon) {
     setState(() {
       statusDetailText = value;
@@ -72,25 +77,33 @@ abstract class StatusCardViewModel extends State<StatusCard> {
     setState(() {
       switch (status) {
         case ChargingStatus.process:
-          statusText = 'CHARGING IN PROGRESS';
+          statusText =
+              AppTranslations.of(context)!.text("charging_in_progress");
           statusBgColor = ColorsCustom.blue;
           statusIconColor = ColorsCustom.blue;
 
           // dummy
-          renderStatusDetail("Connected", Icons.ev_station_outlined);
+          renderStatusDetail(AppTranslations.of(context)!.text("connected"),
+              Icons.ev_station_outlined);
 
         case ChargingStatus.interupted:
-          statusText = 'INTERUPTED';
+          statusText = AppTranslations.of(context)!.text("interupted");
           statusBgColor = ColorsCustom.pomegrande;
           statusIconColor = ColorsCustom.sunflower;
 
           // dummy
-          renderStatusDetail("Unplugged", Icons.cable_outlined);
+          renderStatusDetail(AppTranslations.of(context)!.text("unplugged"),
+              Icons.cable_outlined);
 
         case ChargingStatus.reserved:
-          statusText = 'RESERVED';
+          statusText = AppTranslations.of(context)!.text("reserved");
           statusBgColor = ColorsCustom.wisteria;
           statusIconColor = ColorsCustom.wisteria;
+
+        case ChargingStatus.ready:
+          statusText = AppTranslations.of(context)!.text("ready_to_charge");
+          statusBgColor = ColorsCustom.green;
+          statusIconColor = ColorsCustom.green;
 
         default:
           statusText = '';

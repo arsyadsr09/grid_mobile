@@ -10,6 +10,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:introduction_screen/src/model/page_view_model.dart';
 import 'package:grid_mobile/helpers/colors_custom.dart';
 import 'package:grid_mobile/widgets/custom_button.dart';
+import '../../../localization/app_translations.dart';
 import 'custom_intro_page.dart';
 
 class CustomIntroductionScreen extends StatefulWidget {
@@ -191,7 +192,7 @@ class CustomIntroductionScreenState extends State<CustomIntroductionScreen> {
     bool isSkipBtn = (!_isSkipPressed && !isLastPage && widget.showSkipButton);
 
     final skipBtn = CustomButton(
-      text: "Skip",
+      text: AppTranslations.of(context)!.text("skip"),
       textColor: ColorsCustom.primary,
       flat: true,
       fontWeight: FontWeight.w600,
@@ -201,7 +202,7 @@ class CustomIntroductionScreenState extends State<CustomIntroductionScreen> {
     );
 
     final nextBtn = CustomButton(
-      text: "Next",
+      text: AppTranslations.of(context)!.text("next"),
       textColor: Colors.white,
       bgColor: ColorsCustom.primary,
       fontWeight: FontWeight.w600,
@@ -211,7 +212,7 @@ class CustomIntroductionScreenState extends State<CustomIntroductionScreen> {
     );
 
     final doneBtn = CustomButton(
-      text: "Let's Get Started",
+      text: AppTranslations.of(context)!.text("lets_get_started"),
       textColor: Colors.white,
       bgColor: ColorsCustom.primary,
       fontWeight: FontWeight.w600,
