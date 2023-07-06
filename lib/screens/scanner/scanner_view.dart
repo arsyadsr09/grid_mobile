@@ -32,20 +32,76 @@ class ScannerView extends ScannerViewModel {
           bottom: 0,
           left: 0,
           right: 0,
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: ColorsCustom.white,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(24),
-                  topRight: Radius.circular(24),
-                )),
-            child: CustomText(
-              AppTranslations.of(context)!.text("scan_qr_code"),
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                  onPressed: onGetImageFromGallery,
+                  style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 14),
+                      backgroundColor: ColorsCustom.white.withOpacity(0.2),
+                      foregroundColor: ColorsCustom.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8))),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.image_outlined,
+                        color: ColorsCustom.white,
+                        size: 18,
+                      ),
+                      const SizedBox(width: 8),
+                      CustomText(
+                        AppTranslations.of(context)!.text("open_gallery"),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: ColorsCustom.white,
+                      ),
+                    ],
+                  )),
+              // Container(
+              //     padding:
+              //         const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+              //     decoration: BoxDecoration(
+              //         color: ColorsCustom.white.withOpacity(0.2),
+              //         borderRadius: BorderRadius.circular(8)),
+              //     child: Row(
+              //       mainAxisSize: MainAxisSize.min,
+              //       children: [
+              //         Icon(
+              //           Icons.image_outlined,
+              //           color: ColorsCustom.white,
+              //           size: 18,
+              //         ),
+              //         const SizedBox(width: 8),
+              //         CustomText(
+              //           AppTranslations.of(context)!.text("open_gallery"),
+              //           fontSize: 12,
+              //           fontWeight: FontWeight.w600,
+              //           color: ColorsCustom.white,
+              //         ),
+              //       ],
+              //     )),
+              const SizedBox(height: 20),
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: ColorsCustom.white,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(24),
+                      topRight: Radius.circular(24),
+                    )),
+                child: CustomText(
+                  AppTranslations.of(context)!.text("scan_qr_code"),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
           ),
         ),
         Positioned(
