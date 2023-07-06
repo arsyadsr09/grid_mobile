@@ -113,10 +113,10 @@ abstract class StatusCardViewModel extends State<StatusCard> {
 
   @override
   void initState() {
-    renderStatus();
     super.initState();
 
     Timer.periodic(const Duration(seconds: 1), (timer) {
+      renderStatus();
       if (mounted) {
         setState(() {
           if (progress < 100 && status == ChargingStatus.process) {

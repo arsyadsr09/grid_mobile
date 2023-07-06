@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:grid_mobile/models/marker_model.dart';
+import 'package:grid_mobile/constants/dummy_data.dart';
 import 'package:grid_mobile/redux/actions/map_action.dart';
 import 'package:grid_mobile/screens/map_layer/widgets/detail_station/detail_station.dart';
 // ignore: depend_on_referenced_packages
@@ -76,19 +76,8 @@ abstract class MapLayerViewModel extends State<MapLayer> {
   }
 
   void onDetailStationOpen() {
-    MarkerModel selectedMarker = MarkerModel(
-        id: "1",
-        name: "Citadines Berawa Beach Bali",
-        address:
-            "Jl. Pemelisan Agung, Tibubeneng, Kec. Kuta Utara, Kabupaten Badung, Bali 80363",
-        chargingPorts: [1, 2, 3],
-        rating: 4.5,
-        reviews: [
-          Reviews(message: "Best Day Ever", userId: "1", userName: "Bagas"),
-          Reviews(message: "Mantap sekali", userId: "1", userName: "Lukman"),
-          Reviews(message: "Ramah lingkungan", userId: "1", userName: "Nicol"),
-        ]);
-    store.dispatch(SetSelectedMarker(selectedMarker: selectedMarker));
+    // TODO: Dummy Data
+    store.dispatch(SetSelectedMarker(selectedMarker: DummyData.selectedMarker));
 
     showModalBottomSheet<void>(
         context: context,
