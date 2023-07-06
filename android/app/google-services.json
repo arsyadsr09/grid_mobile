@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "229715153190",
+    "project_id": "grid-ev-station",
+    "storage_bucket": "grid-ev-station.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229715153190:android:5401ef04bfcfb8cae9f1e7",
+        "android_client_info": {
+          "package_name": "com.bireka.grid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "229715153190-acr69dunutc9ccls9pllg2ltg2v7o2ce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAn6o_eNFkfZx4rECrAYg8CuccRmIses4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "229715153190-acr69dunutc9ccls9pllg2ltg2v7o2ce.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "229715153190-hth3phtvt8stlu17oj4asro7s7qhtjpm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gridMobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
