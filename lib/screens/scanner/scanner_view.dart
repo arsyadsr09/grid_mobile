@@ -2,6 +2,7 @@ import 'package:ai_barcode_scanner/ai_barcode_scanner.dart';
 import 'package:flutter/material.dart';
 import 'package:grid_mobile/helpers/helpers.dart';
 import 'package:grid_mobile/screens/scanner/widgets/barcode_scanner_camera.dart';
+import 'package:grid_mobile/screens/scanner/widgets/wrong_barcode.dart';
 import 'package:grid_mobile/widgets/custom_text.dart';
 import '../../localization/app_translations.dart';
 import './scanner_view_model.dart';
@@ -28,6 +29,10 @@ class ScannerView extends ScannerViewModel {
             startDelay: true,
           ),
         ),
+        AnimatedOpacity(
+            opacity: isShowError ? 1 : 0,
+            duration: const Duration(milliseconds: 200),
+            child: WrongBarcode(value: scannerValue)),
         Positioned(
           bottom: 0,
           left: 0,
@@ -130,6 +135,8 @@ class ScannerView extends ScannerViewModel {
                   height: 36,
                   child: IconButton(
                     color: ColorsCustom.white,
+                    style: IconButton.styleFrom(
+                        backgroundColor: ColorsCustom.white.withOpacity(0.3)),
                     tooltip: AppTranslations.of(context)!.text("torch"),
                     onPressed: () => scannerController.toggleTorch(),
                     icon: ValueListenableBuilder<TorchState>(
@@ -137,14 +144,16 @@ class ScannerView extends ScannerViewModel {
                       builder: (context, state, child) {
                         switch (state) {
                           case TorchState.off:
-                            return const Icon(
+                            return Icon(
                               Icons.flash_off,
-                              color: Colors.grey,
+                              color: ColorsCustom.white,
+                              size: 18,
                             );
                           case TorchState.on:
-                            return const Icon(
+                            return Icon(
                               Icons.flash_on,
-                              color: Colors.orange,
+                              color: ColorsCustom.white,
+                              size: 18,
                             );
                         }
                       },

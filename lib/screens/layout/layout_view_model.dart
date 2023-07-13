@@ -5,6 +5,7 @@ import 'package:grid_mobile/redux/actions/main_action.dart';
 import 'package:grid_mobile/redux/app_state.dart';
 import 'package:grid_mobile/screens/home/home.dart';
 import 'package:grid_mobile/screens/map_layer/map_layer.dart';
+import 'package:grid_mobile/screens/settings/settings.dart';
 import 'package:redux/redux.dart';
 import './layout.dart';
 
@@ -31,7 +32,7 @@ abstract class LayoutViewModel extends State<Layout> {
     },
     {
       'name': 'Setting',
-      'screens': const Home(),
+      'screens': const Settings(),
       'icon': Icons.settings_outlined,
       'index': RouteEnum.settings
     },

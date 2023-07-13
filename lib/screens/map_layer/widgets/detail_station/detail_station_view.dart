@@ -64,7 +64,7 @@ class DetailStationView extends DetailStationViewModel {
                 ),
                 const SizedBox(height: 20),
                 CustomButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pushNamed(context, "/Reservation"),
                   text: AppTranslations.of(context)!.text("reserve"),
                   textColor: ColorsCustom.white,
                   bgColor: ColorsCustom.pomegrande,
