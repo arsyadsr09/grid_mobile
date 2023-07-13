@@ -176,7 +176,7 @@ class VerifyOtpView extends VerifyOtpViewModel {
                               offset: const Offset(4, 0),
                               blurRadius: 12,
                               spreadRadius: 0,
-                              color: Colors.black.withOpacity(0.15))
+                              color: Colors.black.withOpacity(0.1))
                         ]),
               child: CustomButton(
                 bgColor: ColorsCustom.primary,
@@ -185,6 +185,7 @@ class VerifyOtpView extends VerifyOtpViewModel {
                 fontWeight: FontWeight.w500,
                 fontSize: 16,
                 padding: const EdgeInsets.symmetric(vertical: 14),
+                onPressed: onVerify,
               ),
             ))
       ],

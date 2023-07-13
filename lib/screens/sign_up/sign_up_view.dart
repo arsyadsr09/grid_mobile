@@ -82,7 +82,7 @@ class SignUpView extends SignUpViewModel {
                         ),
                         idError: "email"),
                     FormText(
-                        hint:AppTranslations.of(context)!.text("phone_number"),
+                        hint: AppTranslations.of(context)!.text("phone_number"),
                         controller: phoneNumberController,
                         onChange: clearError,
                         onClear: onClearTextField,
@@ -136,7 +136,7 @@ class SignUpView extends SignUpViewModel {
                               offset: const Offset(4, 0),
                               blurRadius: 12,
                               spreadRadius: 0,
-                              color: Colors.black.withOpacity(0.15))
+                              color: Colors.black.withOpacity(0.1))
                         ]),
               child: Column(mainAxisSize: MainAxisSize.min, children: [
                 CustomButton(

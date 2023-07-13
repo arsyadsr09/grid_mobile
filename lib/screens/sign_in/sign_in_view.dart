@@ -104,7 +104,7 @@ class SignInView extends SignInViewModel {
                               offset: const Offset(4, 0),
                               blurRadius: 12,
                               spreadRadius: 0,
-                              color: Colors.black.withOpacity(0.15))
+                              color: Colors.black.withOpacity(0.1))
                         ]),
               child: Column(mainAxisSize: MainAxisSize.min, children: [
                 CustomButton(
@@ -114,6 +114,7 @@ class SignInView extends SignInViewModel {
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
                   padding: const EdgeInsets.symmetric(vertical: 14),
+                  onPressed: onSignIn,
                 ),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? CustomButton(
@@ -127,7 +128,8 @@ class SignInView extends SignInViewModel {
                       )
                     : const SizedBox(),
               ]),
-            ))
+            )),
+        const CustomLoadingPage()
       ],
     ));
   }

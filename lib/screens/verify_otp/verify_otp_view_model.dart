@@ -49,6 +49,10 @@ abstract class VerifyOtpViewModel extends State<VerifyOtp> {
     return value.toString().padLeft(2, '0');
   }
 
+  void onVerify() {
+    Navigator.pushNamedAndRemoveUntil(context, "/Layout", (route) => false);
+  }
+
   @override
   void initState() {
     toggleTimer();
