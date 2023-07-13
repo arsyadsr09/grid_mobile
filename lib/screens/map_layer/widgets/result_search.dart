@@ -42,7 +42,7 @@ class _ResultSearchState extends State<ResultSearch> {
                   offset: const Offset(4, 0),
                   blurRadius: 12,
                   spreadRadius: 0,
-                  color: Colors.black.withOpacity(0.15))
+                  color: Colors.black.withOpacity(0.1))
             ]),
         child: ListView(padding: EdgeInsets.zero, shrinkWrap: true, children: [
           listLocation(

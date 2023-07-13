@@ -23,7 +23,7 @@ class DoneCard extends StatelessWidget {
                 offset: const Offset(4, 0),
                 blurRadius: 12,
                 spreadRadius: 0,
-                color: Colors.black.withOpacity(0.15))
+                color: Colors.black.withOpacity(0.1))
           ]),
       child: Stack(children: [
         SizedBox(
