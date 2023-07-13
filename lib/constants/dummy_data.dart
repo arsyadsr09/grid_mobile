@@ -2,7 +2,7 @@ import '../models/models.dart';
 
 class DummyData {
   static final MarkerModel selectedMarker = MarkerModel(
-      id: "1",
+      id: "BRT-GRID-0000001",
       name: "Citadines Berawa Beach Bali",
       address:
           "Jl. Pemelisan Agung, Tibubeneng, Kec. Kuta Utara, Kabupaten Badung, Bali 80363",

@@ -19,4 +19,10 @@ abstract class Env {
 
   @EnviedField(obfuscate: true, varName: 'STORAGE_USER_KEY')
   static String storageUserKey = _Env.storageUserKey;
+
+  @EnviedField(obfuscate: true, varName: 'STORAGE_TOKEN_KEY')
+  static String storageTokenKey = _Env.storageTokenKey;
+
+  @EnviedField(obfuscate: true, varName: 'SECURE_PREFERENCES_NAME')
+  static String securePrefName = _Env.securePrefName;
 }
