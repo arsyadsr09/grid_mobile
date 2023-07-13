@@ -12,3 +12,9 @@ class SetLayoutIndexScreen {
 
   SetLayoutIndexScreen({this.layoutIndexScreen});
 }
+
+class SetLoading {
+  final bool isLoading;
+
+  SetLoading({this.isLoading = false});
+}

@@ -5,3 +5,9 @@ class SetUserInfo {
 
   SetUserInfo({this.userInfo});
 }
+
+class SetCredit {
+  final int? credit;
+
+  SetCredit({this.credit});
+}
