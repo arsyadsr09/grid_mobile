@@ -15,6 +15,10 @@ class Formatters {
     return DateFormat('dd-MM-yyyy HH:mm').format(date);
   }
 
+  static String formatLongMonthDateTime(DateTime date) {
+    return DateFormat('dd MMM yyyy HH:mm').format(date);
+  }
+
   static String getTime(DateTime expiredIn) {
     DateTime date = DateTime.now();
     return DateFormat('HH:mm').format(date);

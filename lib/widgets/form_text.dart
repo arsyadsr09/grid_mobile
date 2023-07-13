@@ -13,7 +13,7 @@ class FormText extends StatefulWidget {
   final String? errorMessage;
   final Widget? suffix, preffix;
   final TextInputType? keyboard;
-  final bool obscureText, readOnly, capitalize, phone, withClear;
+  final bool obscureText, readOnly, capitalize, phone, withClear, hideLabel;
   final Color? fontColor, iconColor;
   final void Function(String)? onChange, onClear;
 
@@ -29,6 +29,7 @@ class FormText extends StatefulWidget {
       this.readOnly = false,
       this.capitalize = false,
       this.phone = false,
+      this.hideLabel = false,
       this.errorMessage,
       required this.idError,
       this.suffix,
@@ -63,15 +64,17 @@ class _FormTextState extends State<FormText> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          widget.errorMessage != "" && widget.controller.text.isEmpty
-              ? ErrorForm(error: widget.errorMessage!)
-              : CustomText(
-                  widget.hint,
-                  color: ColorsCustom.black,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14,
-                ),
-          const SizedBox(height: 7),
+          widget.hideLabel
+              ? const SizedBox()
+              : widget.errorMessage != "" && widget.controller.text.isEmpty
+                  ? ErrorForm(error: widget.errorMessage!)
+                  : CustomText(
+                      widget.hint,
+                      color: ColorsCustom.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                    ),
+          widget.hideLabel ? const SizedBox() : const SizedBox(height: 7),
           Container(
               height: 50,
               padding: widget.preffix != null
