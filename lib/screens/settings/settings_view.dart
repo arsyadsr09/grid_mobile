@@ -11,10 +11,10 @@ class SettingsView extends SettingsViewModel {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomText('Settings'),
+            const CustomText('Settings'),
             ListTile(
               onTap: onLogOut,
-              title: CustomText("Sign Out"),
+              title: const CustomText("Sign Out"),
             )
           ],
         ),

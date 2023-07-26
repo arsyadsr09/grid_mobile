@@ -29,7 +29,7 @@ class SignUpView extends SignUpViewModel {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 15, bottom: 30),
+                      padding: const EdgeInsets.only(left: 15, bottom: 10),
                       child: CustomText(
                         AppTranslations.of(context)!.text("sign_up"),
                         color: ColorsCustom.black,
@@ -42,9 +42,7 @@ class SignUpView extends SignUpViewModel {
                         controller: firstnameController,
                         onChange: clearError,
                         onClear: onClearTextField,
-                        errorMessage: firstnameController.text.isNotEmpty
-                            ? errorFirstname
-                            : "",
+                        errorMessage: errorFirstname,
                         withClear: true,
                         preffix: Icon(
                           Icons.person_outlined,
@@ -57,9 +55,7 @@ class SignUpView extends SignUpViewModel {
                         controller: lastnameController,
                         onChange: clearError,
                         onClear: onClearTextField,
-                        errorMessage: lastnameController.text.isNotEmpty
-                            ? errorLastname
-                            : "",
+                        errorMessage: errorLastname,
                         withClear: true,
                         preffix: Icon(
                           Icons.person_outlined,
@@ -72,8 +68,7 @@ class SignUpView extends SignUpViewModel {
                         controller: emailController,
                         onChange: clearError,
                         onClear: onClearTextField,
-                        errorMessage:
-                            emailController.text.isNotEmpty ? errorEmail : "",
+                        errorMessage: errorEmail,
                         withClear: true,
                         preffix: Icon(
                           Icons.email_outlined,
@@ -86,9 +81,7 @@ class SignUpView extends SignUpViewModel {
                         controller: phoneNumberController,
                         onChange: clearError,
                         onClear: onClearTextField,
-                        errorMessage: phoneNumberController.text.isNotEmpty
-                            ? errorPhoneNumber
-                            : "",
+                        errorMessage: errorPhoneNumber,
                         withClear: true,
                         phone: true,
                         keyboard: TextInputType.phone,
@@ -109,10 +102,22 @@ class SignUpView extends SignUpViewModel {
                           size: 24,
                           color: ColorsCustom.primary,
                         ),
-                        errorMessage: passwordController.text.isNotEmpty
-                            ? errorPassword
-                            : "",
+                        errorMessage: errorPassword,
                         idError: "password"),
+                    FormText(
+                        hint: AppTranslations.of(context)!
+                            .text("retype_password"),
+                        controller: retypePasswordController,
+                        onChange: clearError,
+                        onClear: onClearTextField,
+                        obscureText: true,
+                        preffix: Icon(
+                          Icons.key_outlined,
+                          size: 24,
+                          color: ColorsCustom.primary,
+                        ),
+                        errorMessage: errorRetypePassword,
+                        idError: "retype_password"),
                   ]),
             ],
           ),
@@ -136,7 +141,7 @@ class SignUpView extends SignUpViewModel {
                               offset: const Offset(4, 0),
                               blurRadius: 12,
                               spreadRadius: 0,
-                              color: Colors.black.withOpacity(0.1))
+                              color: ColorsCustom.black.withOpacity(0.1))
                         ]),
               child: Column(mainAxisSize: MainAxisSize.min, children: [
                 CustomButton(
@@ -160,7 +165,8 @@ class SignUpView extends SignUpViewModel {
                       )
                     : const SizedBox(),
               ]),
-            ))
+            )),
+        const CustomLoadingPage()
       ],
     ));
   }

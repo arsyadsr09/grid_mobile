@@ -4,6 +4,7 @@ import '../../constants/enum/route_enum.dart';
 import '../../helpers/helpers.dart';
 import '../../redux/app_state.dart';
 import '../../redux/modules/main_state.dart';
+import '../../widgets/widgets.dart';
 import './layout_view_model.dart';
 
 class LayoutView extends LayoutViewModel {
@@ -40,7 +41,8 @@ class LayoutView extends LayoutViewModel {
                           )
                           .toList(),
                     ),
-                  ))
+                  )),
+              const CustomLoadingPage()
             ]);
           }),
     );

@@ -99,6 +99,6 @@ abstract class IntroductionsViewModel extends State<Introductions> {
 
     // ignore: use_build_context_synchronously
     Navigator.of(context)
-        .pushNamedAndRemoveUntil('/Layout', (Route<dynamic> route) => false);
+        .pushNamedAndRemoveUntil('/Landing', (Route<dynamic> route) => false);
   }
 }

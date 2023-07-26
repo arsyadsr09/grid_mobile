@@ -7,6 +7,11 @@ class Formatters {
     return formatCurrency.format(money);
   }
 
+  static String formatNumber(double? number) {
+    final formatCurrency = NumberFormat.currency(decimalDigits: 0);
+    return formatCurrency.format(number);
+  }
+
   static String formatDate(DateTime date) {
     return DateFormat('dd-MM-yyyy').format(date);
   }

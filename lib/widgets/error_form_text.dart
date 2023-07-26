@@ -10,7 +10,7 @@ class ErrorForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 15, left: 5),
+      padding: const EdgeInsets.only(left: 5),
       child: CustomText(
         error,
         fontWeight: FontWeight.w300,

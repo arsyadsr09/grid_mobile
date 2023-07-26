@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -6,6 +9,7 @@ import 'package:grid_mobile/models/models.dart';
 import 'package:grid_mobile/redux/actions/main_action.dart';
 import 'package:grid_mobile/redux/actions/user_action.dart';
 import 'package:grid_mobile/redux/app_state.dart';
+import 'package:grid_mobile/screens/lifecycle_manager/lifecycle_manager.dart';
 import 'package:redux/redux.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../constants/storage_const.dart';
@@ -84,26 +88,53 @@ abstract class SignInViewModel extends State<SignIn> {
           password: passwordController.text,
           param: emailController.text,
         );
-        ResponseModel resData = res.data;
+        ResponseModel resData = ResponseModel.fromJson(res.data);
 
         if (resData.status!) {
           SharedPreferences prefs = await SharedPreferences.getInstance();
-          await prefs.setBool('is_login', true);
+
+          UserModel userData = UserModel(
+            id: resData.data['user']['id'].toString(),
+            idHash: resData.data['user']['id_hash'],
+            email: resData.data['user']['email'],
+            phone: resData.data['user']['phone'],
+            firstName: resData.data['user']['first_name'],
+            lastName: resData.data['user']['last_name'],
+            isActive: resData.data['user']['is_active'],
+            roleId: resData.data['user']['role_id'],
+            createdAt: resData.data['user']['created_at'],
+            updatedAt: resData.data['user']['updated_at'],
+          );
+          Map userDataJson = userData.toJson();
+
+          await storage.write(
+            key: StorageConst.userDataKey,
+            value: jsonEncode(userDataJson),
+            iOptions: SecureStorage.getIOSOptions(),
+            aOptions: SecureStorage.getAndroidOptions(),
+          );
           await storage.write(
             key: StorageConst.tokenKey,
             value: resData.data['access_token'],
           );
 
-          //TODO: Handle user data
+          await prefs.setBool('is_login', true);
+          await store.dispatch(SetUserInfo(userInfo: userData));
 
-          store.dispatch(SetCredit(credit: resData.data['user']['credit']));
+          await store
+              .dispatch(SetCredit(credit: resData.data['user']['credit']));
+          // ignore: use_build_context_synchronously
+          await LifecycleManager.of(context)?.initData();
           // ignore: use_build_context_synchronously
           Navigator.pushNamedAndRemoveUntil(
               context, "/Layout", (route) => false);
         }
-      } catch (e) {
+      } catch (e, t) {
         store.dispatch(SetLoading(isLoading: true));
-        debugPrint(e.toString());
+        if (kDebugMode) {
+          print(e);
+          print(t);
+        }
       }
     }
   }

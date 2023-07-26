@@ -34,7 +34,6 @@ abstract class LandingViewModel extends State<Landing> {
 
       GoogleSignInAccount? googleUser = googleSignIn.currentUser;
 
-      // TODO: implement login by google
       if (googleUser != null) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         UserModel userData = UserModel(

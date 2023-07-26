@@ -45,8 +45,7 @@ class SignInView extends SignInViewModel {
                         controller: emailController,
                         onChange: clearError,
                         onClear: onClearTextField,
-                        errorMessage:
-                            emailController.text.isNotEmpty ? errorEmail : "",
+                        errorMessage: errorEmail,
                         withClear: true,
                         preffix: Icon(
                           Icons.person_outline_rounded,
@@ -65,9 +64,7 @@ class SignInView extends SignInViewModel {
                           size: 24,
                           color: ColorsCustom.primary,
                         ),
-                        errorMessage: passwordController.text.isNotEmpty
-                            ? errorPassword
-                            : "",
+                        errorMessage: errorPassword,
                         idError: "password"),
                     Align(
                       alignment: Alignment.centerRight,

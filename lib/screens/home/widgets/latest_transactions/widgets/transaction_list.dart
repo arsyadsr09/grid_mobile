@@ -12,13 +12,17 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final IconData icon =
-        data.type == 'in' ? Icons.call_received : Icons.call_made;
-    final Color color =
-        data.type == 'in' ? ColorsCustom.green : ColorsCustom.primary;
+    final IconData icon = data.type == 'topup' || data.type == 'received'
+        ? Icons.call_received
+        : Icons.call_made;
+    final Color color = data.type == 'topup' || data.type == 'received'
+        ? ColorsCustom.green
+        : ColorsCustom.primary;
     final String dateFormatted =
-        DateTime.fromMillisecondsSinceEpoch(data.datetime!).toString();
-    final String value = Formatters.formatCurrency(data.value);
+        Formatters.formatLongMonthDateTime(DateTime.parse(data.datetime!));
+    final String value = data.creditIdr != null
+        ? Formatters.formatCurrency(data.creditIdr)
+        : Formatters.formatNumber(data.creditKwh);
     return Container(
       margin: const EdgeInsets.only(top: 10),
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -45,7 +49,7 @@ class TransactionList extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomText(
-                  data.info,
+                  Formatters.capitalizeFirstofEach(data.type!),
                   color: ColorsCustom.black,
                   fontWeight: FontWeight.w500,
                   fontSize: 12,
@@ -61,7 +65,9 @@ class TransactionList extends StatelessWidget {
             ),
           ),
           CustomText(
-            data.type == 'in' ? value : "- $value",
+            data.type == 'topup' || data.type == 'received'
+                ? value
+                : "- $value",
             color: color,
             fontWeight: FontWeight.w700,
             fontSize: 12,

@@ -141,6 +141,7 @@ class VerifyOtpView extends VerifyOtpViewModel {
                                 fontSize: 12,
                                 fontFamily: 'Poppins')),
                         GestureDetector(
+                            onTap: onResendOtp,
                             child: Text(
                                 AppTranslations.of(context)!
                                     .text("resend_code"),
@@ -187,7 +188,8 @@ class VerifyOtpView extends VerifyOtpViewModel {
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 onPressed: onVerify,
               ),
-            ))
+            )),
+        const CustomLoadingPage()
       ],
     ));
   }

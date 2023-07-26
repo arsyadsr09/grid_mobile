@@ -8,4 +8,7 @@ class LifecycleManager extends StatefulWidget {
 
   @override
   LifecycleManagerView createState() => LifecycleManagerView();
+
+  static LifecycleManagerView? of(BuildContext context) =>
+      context.findAncestorStateOfType<LifecycleManagerView>();
 }
