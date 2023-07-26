@@ -1,27 +1,32 @@
 class TransactionModel {
-  String? id;
-  int? datetime;
+  String? datetime;
+  String? idHash;
+  int? creditIdr;
+  double? creditKwh;
   String? type;
-  int? value;
-  String? info;
 
-  TransactionModel({this.id, this.datetime, this.type, this.value, this.info});
+  TransactionModel(
+      {this.datetime,
+      this.idHash,
+      this.creditIdr,
+      this.creditKwh,
+      this.type});
 
   TransactionModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
     datetime = json['datetime'];
+    idHash = json['id_hash'];
+    creditIdr = json['credit_idr'];
+    creditKwh = json['credit_kwh'];
     type = json['type'];
-    value = json['value'];
-    info = json['info'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
     data['datetime'] = datetime;
+    data['id_hash'] = idHash;
+    data['credit_idr'] = creditIdr;
+    data['credit_kwh'] = creditKwh;
     data['type'] = type;
-    data['value'] = value;
-    data['info'] = info;
     return data;
   }
 }
