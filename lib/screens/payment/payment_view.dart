@@ -24,132 +24,136 @@ class PaymentView extends PaymentViewModel {
                     right: 20,
                     bottom: 0,
                     top: 90,
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomText(
-                            AppTranslations.of(context)!.text("summary"),
-                            color: ColorsCustom.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                          ),
-                          const SizedBox(height: 15),
-                          if (widget.type == PaymentTypeEnum.charging)
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                rowTextInfo(
-                                    label: AppTranslations.of(context)!
-                                        .text("charging_amount"),
-                                    value: Formatters.formatCurrency(state
-                                        .paymentsState
-                                        .scannedItem
-                                        ?.payment
-                                        ?.amount)),
-                                const SizedBox(height: 5),
-                                rowTextInfo(
-                                    label:
-                                        "${AppTranslations.of(context)!.text("ppn")} (10%)",
-                                    value: Formatters.formatCurrency((state
-                                        .paymentsState
-                                        .scannedItem!
-                                        .payment!
-                                        .tax!)))
-                              ],
-                            ),
-                          if (widget.type == PaymentTypeEnum.reservation)
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                rowTextInfo(
-                                    label: AppTranslations.of(context)!
-                                        .text("reserve"),
-                                    value: Formatters.formatCurrency(state
-                                        .paymentsState
-                                        .reservation
-                                        ?.payment
-                                        ?.amount)),
-                                const SizedBox(height: 5),
-                                rowTextInfo(
-                                    label: AppTranslations.of(context)!
-                                        .text("space_pick"),
-                                    value: Formatters.formatCurrency(state
-                                        .paymentsState
-                                        .reservation
-                                        ?.spacePickAmount)),
-                                const SizedBox(height: 5),
-                                rowTextInfo(
-                                    label:
-                                        "${AppTranslations.of(context)!.text("ppn")} (10%)",
-                                    value: Formatters.formatCurrency(state
-                                        .paymentsState
-                                        .reservation!
-                                        .payment!
-                                        .tax!))
-                              ],
-                            ),
-                          Divider(
-                            color: ColorsCustom.border,
-                            height: 25,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              CustomText(
-                                AppTranslations.of(context)!.text("total"),
-                                color: ColorsCustom.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                              ),
-                              CustomText(
-                                Formatters.formatCurrency(
-                                    widget.type == PaymentTypeEnum.reservation
-                                        ? state.paymentsState.reservation!
-                                            .payment!.total
-                                        : state.paymentsState.scannedItem!
-                                            .payment!.total),
-                                color: ColorsCustom.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 40),
-                          CustomText(
-                            AppTranslations.of(context)!.text("payment_method"),
-                            color: ColorsCustom.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                          ),
-                          const SizedBox(height: 15),
-                          paymentMethodCard(
-                            icon: Icons.wallet_outlined,
-                            name: "Grid Cash",
-                            suffix: CustomText(
-                              Formatters.formatCurrency(state.userState.credit),
-                              color: selectedPaymentMethod == "Grid Cash"
-                                  ? ColorsCustom.white
-                                  : ColorsCustom.black,
-                              fontSize: 10,
+                    child: SingleChildScrollView(
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomText(
+                              AppTranslations.of(context)!.text("summary"),
+                              color: ColorsCustom.black,
+                              fontSize: 14,
                               fontWeight: FontWeight.w600,
                             ),
-                          ),
-                          paymentMethodCard(
-                              icon: Icons.payments_outlined,
-                              name: AppTranslations.of(context)!
-                                  .text("other_payment"),
-                              suffix: Icon(
-                                Icons.chevron_right_rounded,
-                                size: 20,
-                                color: selectedPaymentMethod ==
-                                        AppTranslations.of(context)!
-                                            .text("other_payment")
+                            const SizedBox(height: 15),
+                            if (widget.type == PaymentTypeEnum.charging)
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  rowTextInfo(
+                                      label: AppTranslations.of(context)!
+                                          .text("charging_amount"),
+                                      value: Formatters.formatCurrency(state
+                                          .paymentsState
+                                          .scannedItem
+                                          ?.payment
+                                          ?.amount)),
+                                  const SizedBox(height: 5),
+                                  rowTextInfo(
+                                      label:
+                                          "${AppTranslations.of(context)!.text("ppn")} (10%)",
+                                      value: Formatters.formatCurrency((state
+                                          .paymentsState
+                                          .scannedItem!
+                                          .payment!
+                                          .tax!)))
+                                ],
+                              ),
+                            if (widget.type == PaymentTypeEnum.reservation)
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  rowTextInfo(
+                                      label: AppTranslations.of(context)!
+                                          .text("reserve"),
+                                      value: Formatters.formatCurrency(state
+                                          .paymentsState
+                                          .reservation
+                                          ?.payment
+                                          ?.amount)),
+                                  const SizedBox(height: 5),
+                                  rowTextInfo(
+                                      label: AppTranslations.of(context)!
+                                          .text("space_pick"),
+                                      value: Formatters.formatCurrency(state
+                                          .paymentsState
+                                          .reservation
+                                          ?.spacePickAmount)),
+                                  const SizedBox(height: 5),
+                                  rowTextInfo(
+                                      label:
+                                          "${AppTranslations.of(context)!.text("ppn")} (10%)",
+                                      value: Formatters.formatCurrency(state
+                                          .paymentsState
+                                          .reservation!
+                                          .payment!
+                                          .tax!))
+                                ],
+                              ),
+                            Divider(
+                              color: ColorsCustom.border,
+                              height: 25,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CustomText(
+                                  AppTranslations.of(context)!.text("total"),
+                                  color: ColorsCustom.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                                CustomText(
+                                  Formatters.formatCurrency(
+                                      widget.type == PaymentTypeEnum.reservation
+                                          ? state.paymentsState.reservation!
+                                              .payment!.total
+                                          : state.paymentsState.scannedItem!
+                                              .payment!.total),
+                                  color: ColorsCustom.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 40),
+                            CustomText(
+                              AppTranslations.of(context)!
+                                  .text("payment_method"),
+                              color: ColorsCustom.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            const SizedBox(height: 15),
+                            paymentMethodCard(
+                              icon: Icons.wallet_outlined,
+                              name: "Grid Cash",
+                              suffix: CustomText(
+                                Formatters.formatCurrency(
+                                    state.userState.credit),
+                                color: selectedPaymentMethod == "Grid Cash"
                                     ? ColorsCustom.white
-                                    : ColorsCustom.disabled,
-                              ))
-                        ])),
+                                    : ColorsCustom.black,
+                                fontSize: 10,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            paymentMethodCard(
+                                icon: Icons.payments_outlined,
+                                name: AppTranslations.of(context)!
+                                    .text("other_payment"),
+                                suffix: Icon(
+                                  Icons.chevron_right_rounded,
+                                  size: 20,
+                                  color: selectedPaymentMethod ==
+                                          AppTranslations.of(context)!
+                                              .text("other_payment")
+                                      ? ColorsCustom.white
+                                      : ColorsCustom.disabled,
+                                ))
+                          ]),
+                    )),
                 Positioned(
                   bottom: 0,
                   left: 0,

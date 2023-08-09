@@ -129,7 +129,9 @@ class HomeView extends HomeViewModel {
                                         buttonTopBar(
                                             icon: Icons.wallet_outlined,
                                             name: AppTranslations.of(context)!
-                                                .text("top_up")),
+                                                .text("top_up"),
+                                            onTap: () => Navigator.pushNamed(
+                                                context, "/TopUp")),
                                         buttonTopBar(
                                             icon: Icons.call_made_rounded,
                                             name: AppTranslations.of(context)!
@@ -137,7 +139,9 @@ class HomeView extends HomeViewModel {
                                         buttonTopBar(
                                             icon: Icons.call_received_rounded,
                                             name: AppTranslations.of(context)!
-                                                .text("request")),
+                                                .text("request"),
+                                            onTap: () => Navigator.pushNamed(
+                                                context, "/Request")),
                                       ]),
                                     ),
                                   ),

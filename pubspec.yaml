@@ -89,6 +89,7 @@ flutter:
     - assets/locale/localization_id.json
     - assets/lotties/
     - assets/images/
+    - assets/images/payments/
     - assets/images/introductions/
     - assets/images/type_charging/
     - assets/images/type_charging/raw/
